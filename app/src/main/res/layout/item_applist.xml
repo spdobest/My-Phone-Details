@@ -4,14 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="5dp"
-    android:layout_height="80dp">
+    android:layout_height="80dp"
+    android:layout_margin="5dp">
 
     <TextView
         android:id="@+id/tvAppName"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:gravity="center"
         android:text="TextView"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -26,7 +27,7 @@
 
     <TextView
         android:id="@+id/tvPackageName"
-        android:layout_width="58dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -34,6 +35,6 @@
         android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@+id/tvAppName"
-        tools:layout_editor_absoluteX="134dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="134dp"/>
 </android.support.constraint.ConstraintLayout>

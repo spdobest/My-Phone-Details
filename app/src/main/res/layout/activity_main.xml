@@ -124,5 +124,25 @@
         </android.support.v7.widget.CardView>
 
 
+    <!--SIM NUMBER-->
+    <android.support.v7.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        >
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvAppList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Applist"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:padding="5dp"
+            />
+    </android.support.v7.widget.CardView>
+
+
+
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

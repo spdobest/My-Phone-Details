@@ -11,6 +11,7 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.dialogfragment_kotlin.view.*
 import spinfotech.getphonedetails.ui.adapter.AppListAdapter
 
 class ApplistDialogFragment : DialogFragment(), View.OnClickListener {
+
+    lateinit var recyclerViewAppList:RecyclerView
 
     var appList: MutableList<ApplicationInfo> = ArrayList()
     lateinit var listAdapter: AppListAdapter
@@ -36,6 +39,7 @@ class ApplistDialogFragment : DialogFragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.dialogfragment_kotlin, container, false)
+        recyclerViewAppList = view.findViewById(R.id.recyclerViewAppList)
         initView()
         return view
     }
@@ -71,11 +75,12 @@ class ApplistDialogFragment : DialogFragment(), View.OnClickListener {
     }
 
     private fun initView() {
-        recyclerViewAppList.layoutManager = LinearLayoutManager(activity)
-        listAdapter = AppListAdapter(appList)
-        recyclerViewAppList.adapter = listAdapter
 
-        LoadApplications().execute()
+        println(recyclerViewAppList)
+
+
+
+        LoadApplications().execute("")
 
     }
 
@@ -100,24 +105,21 @@ class ApplistDialogFragment : DialogFragment(), View.OnClickListener {
         return applist
     }
 
-    private inner class LoadApplications : AsyncTask<Void, Void, Void>() {
+    private inner class LoadApplications : AsyncTask<String, String, String>() {
 
-        override fun doInBackground(vararg params: Void): Void? {
+        override fun doInBackground(vararg params: String): String? {
             val appListNew = getListOfAppsInstalled(activity.packageManager.getInstalledApplications(PackageManager.GET_META_DATA))
             appList = ArrayList()
             appList.addAll(appListNew as List<ApplicationInfo>)
 //            applicationName = "" + info.loadLabel(AppContext.getInstance().getPackageManager())
-            return null
+            return "asdas"
         }
 
-        override fun onCancelled() {
-            super.onCancelled()
-        }
-
-        override fun onPostExecute(result: Void) {
+        override fun onPostExecute(result: String) {
             super.onPostExecute(result)
-
-            listAdapter.notifyDataSetChanged()
+            recyclerViewAppList?.layoutManager = LinearLayoutManager(activity)
+            listAdapter = AppListAdapter(appList)
+            recyclerViewAppList.adapter = listAdapter
 
         }
     }

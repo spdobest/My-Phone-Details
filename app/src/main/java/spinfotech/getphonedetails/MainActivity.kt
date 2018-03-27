@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.Toast
+import spinfotech.getphonedetails.ui.ApplistDialogFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         tvCopySimSirialNumber.setOnClickListener(View.OnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", tvSimSerialNumber.text)
@@ -40,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this,"Copied",Toast.LENGTH_SHORT).show()
 
+        })
+        tvAppList.setOnClickListener(View.OnClickListener {
+            ApplistDialogFragment().show(supportFragmentManager,"")
         })
 
         tvCopySimNumber.setOnClickListener(View.OnClickListener {
@@ -49,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Copied",Toast.LENGTH_SHORT).show()
         })
 
-        //  ApplistDialogFragment().show(supportFragmentManager,"")
+
 
     }
 
