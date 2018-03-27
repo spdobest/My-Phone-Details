@@ -16,10 +16,13 @@ import android.provider.Settings.Secure
 class PhoneUtility {
 
     companion object {
-         fun getSimNumber(context:Context){
+         fun getSimNumber(context:Context):Pair<String,String>{
             val telemamanger = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             val getSimSerialNumber = telemamanger.simSerialNumber
             val getSimNumber = telemamanger.line1Number
+
+             return Pair(getSimSerialNumber,getSimNumber);
+
         }
 
 
@@ -51,19 +54,15 @@ class PhoneUtility {
         fun getSim1State(context:Context): String? {
             val telemamanger = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             val simState1 = telemamanger.getSimState(0)
-            return simState1
+            return ""+simState1
         }
         fun getSim2State(context:Context): String? {
             val telemamanger = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             val simState2 = telemamanger.getSimState(1)
-            return simState2
+            return ""+simState2
         }
 
-        fun getSim2State(context:Context): String? {
-            val telemamanger = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            val simState2 = telemamanger.(1)
-            return simState2
-        }
+
 
     }
 
